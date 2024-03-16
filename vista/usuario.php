@@ -74,7 +74,7 @@
                     //obtener la siguiente fila de resultados como un objeto.
                     while ($datos = $sql->fetch_object()) { ?>
                         <tr>
-                            <td><?= $datos->id ?></td>
+                            <td><?= $datos->id //abreviatura de echo?></td> 
                             <td><?= $datos->nombre ?></td>
                             <td><?= $datos->apellido ?></td>
                             <td><?= $datos->dni ?></td>

@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -70,8 +69,9 @@
 
     <div class="login-form">
 
-        <h2>Login</h2>
-        <form action="../controlador/control.php" method="post" class="form" id="form">
+        <h2>Register</h2>
+
+        <form action="../controlador/registrar.php" method="post" class="form" id="form">
             <div class="form-group">
                 <input class="form-control" type="text" name="usuario" placeholder="Usuario">
             </div>
@@ -80,22 +80,17 @@
             </div>
             <br>
             <div class="form-group">
-                <button type="submit" name="submit" value="Entrar" class="btn btn-primary" id="entrar">Acceder</button>
+                <button type="submit" name="submit" class="btn btn-primary" id="entrar">Crear Cuenta</button>
             </div>
         </form>
         <div class="d-flex gap-1 justify-content-center mt-1">
-            <p>No tienes cuenta?</p>
-            <a href="../vista/register.php" class="text-decoration-none text-primary fw-semibold"> Registrate</a>
+            <p>Ya tienes una cuenta?</p>
+            <a href="../vista/login.php" class="text-decoration-none text-primary fw-semibold"> accedé</a>
         </div>
-  
 
-        <div class="d-flex gap-1 justify-content-center mt-1">
-            <p>Continuar sin iniciar sesión</p>
-            <a href="../index.php" class="text-decoration-none text-primary fw-semibold"> Continuar</a>
-        </div>
     </div>
 
-   
+
 </body>
 
 </html>

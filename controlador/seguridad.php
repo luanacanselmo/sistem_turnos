@@ -5,6 +5,6 @@ if (session_status() == PHP_SESSION_NONE) {
     //PHP_SESSION_NONE indica que no hay ninguna sesión activa.
 }
 if ($_SESSION["autentificado"] != "1") {
-    header("location: ../vista/inicio.php");
+    header("location: ../vista/login.php");
     exit();
 }

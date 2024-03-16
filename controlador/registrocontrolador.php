@@ -1,26 +1,30 @@
 <?php
-include "../modelo/conexion.php";
-
-if (!empty($_POST["btnregistrar"])) { //si presiona el boton
+include "../modelo/modelopersona.php";
+//si está definida, el formulario se envío
+if (!empty($_POST["btnregistrar"])) {
     if (
         !empty($_POST["nombre"]) and !empty($_POST["apellido"]) and !empty($_POST["dni"])
-        and !empty($_POST["fecha"]) and !empty($_POST["correo"])
+        and !empty($_POST["fecha"]) and !empty($_POST["correo"]) //no estén vacíos
     ) {
-
-
         $nombre = $_POST["nombre"];
         $apellido = $_POST["apellido"];
         $dni = $_POST["dni"];
         $fecha = $_POST["fecha"];
         $correo = $_POST["correo"];
+//Asigna los valores de los campos del formulario a variables locales.
 
-        $sql = $conexion->query("INSERT INTO persona (nombre, apellido, dni, fecha_nac, correo) values('$nombre','$apellido', '$dni', '$fecha', '$correo' )");
+        insertarPersona($nombre, $apellido, $dni, $fecha, $correo);
     } else {
-        echo "algun campo esta vacios";
+        echo "Algun campo está vacío";
     }
 }
-$idSeleccionado = isset($_POST['txtID']) ? $_POST['txtID'] : 0; // Usar 0 como valor predeterminado o algún valor que indique que no hay ID seleccionado.
-$registroSeleccionado = seleccionarRegistro($idSeleccionado);
+
+$idSeleccionado = isset($_POST['txtID']) ? $_POST['txtID'] : 0;
+
+//isset($_POST['txtID']): Verifica si $_POST['txtID'] está definido y no es nulo.
+//Si $_POST['txtID'] existe y no es nulo, se asigna su valor a $idSeleccionado.
+//Si $_POST['txtID'] no existe o es nulo, se asigna el valor 0 a $idSeleccionado.
+$registroSeleccionado = seleccionarPersona($idSeleccionado);
 
 $id_usuario = isset($registroSeleccionado) ? $registroSeleccionado->id : '';
 $nombre = isset($registroSeleccionado) ? $registroSeleccionado->nombre : '';
@@ -29,36 +33,24 @@ $dni = isset($registroSeleccionado) ? $registroSeleccionado->dni : '';
 $fecha_nac = isset($registroSeleccionado) ? $registroSeleccionado->fecha_nac : '';
 $correo = isset($registroSeleccionado) ? $registroSeleccionado->correo : '';
 
-
-function seleccionarRegistro($id)
-{
-    global $conexion;
-    $result = $conexion->query("SELECT * FROM persona WHERE id = $id");
-    return $result->fetch_object();
-}
-
 if (!empty($_POST["accion"])) {
-        $nombre = $_POST["nombre"];
-        $apellido = $_POST["apellido"];
-        $dni = $_POST["dni"];
-        $fecha = $_POST["fecha"];
-        $correo = $_POST["correo"];
-        $id_usuario = $_POST["id_usuario"]; // Add this line to get the ID
+    $nombre = $_POST["nombre"];
+    $apellido = $_POST["apellido"];
+    $dni = $_POST["dni"];
+    $fecha = $_POST["fecha"];
+    $correo = $_POST["correo"];
+    $id_usuario = $_POST["id_usuario"];
 
-        // Use prepared statement to avoid SQL injection
-        $stmt = $conexion->prepare("UPDATE persona SET nombre=?, apellido=?, dni=?, fecha_nac=?, correo=? WHERE id=?");
-        $stmt->bind_param("sssssi", $nombre, $apellido, $dni, $fecha, $correo, $id_usuario);
-        $stmt->execute();
-        $stmt->close();
-        header("Location: ".$_SERVER['PHP_SELF']);
-        exit();
-    } 
+    actualizarPersona($id_usuario, $nombre, $apellido, $dni, $fecha, $correo);
+    header("Location: ".$_SERVER['PHP_SELF']); // para redirigir a la misma página
+    exit();
+} 
 
-    if (!empty($_POST["accion3"])) {
-        $id_eliminar = $_POST["id_usuario_eliminar"];
-        $sql_eliminar = $conexion->query("DELETE FROM persona WHERE id = $id_eliminar");
-        // Redirecciona al usuario a la misma página para limpiar los campos
-        header("Location: ".$_SERVER['PHP_SELF']);
-        exit();
-    }
+if (!empty($_POST["accion3"])) {
+    $id_eliminar = $_POST["id_usuario"];
+    eliminarPersona($id_eliminar);
+    header("Location: ".$_SERVER['PHP_SELF']);
+    exit();
+}
 ?>
+

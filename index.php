@@ -215,7 +215,7 @@
 
         <div class="galeria">
             <div class="item disenio">
-                <img src="CARDIOLOGÍA.png" alt="">
+                <img src="img/CARDIOLOGÍA.png" alt="">
                 <div class="info">
                     <p></br></p>
                     <p style="text-align: center; font-size:20px; font-weight: bold; ">Doctor Fabricio Peña</p>
@@ -226,7 +226,7 @@
             </div>
 
             <div class="item animaciones">
-                <img src="CLÍNICA.png" alt="">
+                <img src="img/CLÍNICA.png" alt="">
                 <div class="info">
                 <p></br></p>
 
@@ -236,7 +236,7 @@
                 </div>
             </div>
             <div class="item animaciones">
-                <img src="GINECOLOGÍA.png" alt="">
+                <img src="img/GINECOLOGÍA.png" alt="">
                 <div class="info">
                 <p></br></p>
 
@@ -248,7 +248,7 @@
                 </div>
             </div>
             <div class="item programacion">
-                <img src="NEUROLOGÍA.png" alt="">
+                <img src="img/NEUROLOGÍA.png" alt="">
                 
                 <div class="info">
                 <p></br></p>
@@ -259,7 +259,7 @@
             </div>
 
             <div class="item programacion">
-                <img src="PEDIATRÍA.png" alt="">
+                <img src="img/PEDIATRÍA.png" alt="">
                 <div class="info">
                 <p></br></p>
 

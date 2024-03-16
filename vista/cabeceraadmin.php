@@ -13,7 +13,6 @@
 
 <body>
 
-    <?php $url="http://".$_SERVER['HTTP_HOST']."/proyectonani" ?>
 
 <nav class="navbar navbar-expand navbar-light bg-light">
     <div class="nav navbar-nav">
@@ -24,7 +23,8 @@
         <a class="nav-item nav-link" href="turno.php">Turnos</a>
         <a class="nav-item nav-link" href="usuario.php">Pacientes</a>
 
-        <a class="nav-item nav-link" href="<?php echo $url; ?>">Ver sitio</a>
+        <a class="nav-item nav-link" href="../index.php">Ver sitio</a>
+        <a class="nav-item nav-link" href="salir.php">Cerrar Sesion</a>
 
 
 
